@@ -1,15 +1,5 @@
 <template>
- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Реєстрація</title>
-</head>
-
-<body>
-    <main>
+  <main>
         <form ref="form"  id="registrationForm">
             <h1>Реєстрація</h1>
             <label>
@@ -82,9 +72,9 @@
                 </button>
             </div>
         </form>
-
-        <div className="userTableContainer">
-            <div class="userTableWrapper">
+        <div class="userTableWrapper">
+            <div className="userTableContainer">
+            <div className="userTableWrapper">
                 <h2>Зареєстровані користувачі</h2>
                 <table id="userTable">
                     <thead>
@@ -94,32 +84,27 @@
                             <th>Прізвище</th>
                             <th>Ім'я</th>
                             <th>Телефон</th>
-                        </tr>   
+                        </tr>
                     </thead>
                     <tbody id="userTableBody">
-                      <tr v-for="(el, index) in users" :key="index">
-                            <td><input type="checkbox"></td>
-                            <td>{{el.email}}</td>
-                            <td>{{el.surname}}</td>
-                            <td>{{el.firstName}}</td>
-                            <td>{{el.phone}}</td>
-                        </tr>
+                        <UserTable v-for="(el, index) in users" :key="index" :user="el" @update-checked="updateChecked"/>
                     </tbody>
                 </table>
             </div>
             <div className="action-buttons">
-                <button id="delete">Видалити</button>
-                <button id="duplicate">Продублювати</button>
+                <button @click="deleteSelected" id="delete">Видалити</button>
+                <button @click="duplicateSelected" id="duplicate">Продублювати</button>
             </div>
-        </div>
+        </div>  
+    </div>  
     </main>
-</body>
 
-</html>
 </template>
 
 <script>
+import UserTable from './components/UserTable.vue';
 export default{
+    components:{ UserTable },
     data() {
         return{
             users: [],
@@ -144,7 +129,8 @@ export default{
                 birthday: '',
                 group: '',
                 phone: ''
-            }
+            },
+            
     }
     
 }, 
@@ -251,150 +237,25 @@ methods: {
                 group: '',
                 phone: ''
             };
+        },
+        updateChecked({ id, checked }) {
+            const user = this.users.find(u => u.id === id);
+            if (user) {
+                user.checked = checked;
+            }
+        },
+        deleteSelected() {
+            this.users = this.users.filter(user => !user.checked)
+        },
+        duplicateSelected() {
+            const duplicates = this.users
+                .filter(user => user.checked)
+                .map(user => ({...user, id: user.id++, checked: false }));
+            this.users.push(...duplicates);
         }
 }
 
 }
 </script>
 
-<style>
-
-body {
-    background-color: #f7f7f7;
-    min-height: 100vw;
-}
-
-main {
-    background-color: #f7f7f7;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-h1 {
-    display: flex;
-    font-size: 2em;
-    color: #611a03;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-form {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    padding: 20px 20px;
-    width: 340px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 6px;
-}
-
-.text-small {
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-input[type="email"],
-input[type="password"],
-input[type="text"],
-input[type="date"],
-select,
-input[type="tel"],
-input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-input[type="radio"] {
-    padding: 10px;
-    margin: 10px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    margin: 5px;
-    background-color: rgb(231, 85, 12);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: rgb(231, 56, 12);
-}
-
-.group {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    margin: 8px 0;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-span {
-    display: block;
-    font-size: 12px;
-    color: red;
-}
-
-h2 {
-    font-size: 24px;
-    margin-top: 60px;
-    margin-bottom: 15px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-table,
-th,
-td {
-    border: 1px solid #dddddd;
-}
-
-th,
-td {
-    text-align: left;
-    padding: 12px;
-}
-
-thead {
-    background-color: #f2f2f2;
-}
-
-.userTableWrapper {
-    width: 100%;
-    overflow-x: scroll;
-}
-
-.userTableContainer {
-    width: 95vw;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    margin: 20px;
-}
-</style>
 
