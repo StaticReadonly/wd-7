@@ -5,10 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../style.css" />
-    <link rel="stylesheet" href="../login_form_common.css" />
-    <link rel="stylesheet" href="../header_style.css" />
-
     <title>Реєстрація</title>
 </head>
 
@@ -98,16 +94,16 @@
                             <th>Прізвище</th>
                             <th>Ім'я</th>
                             <th>Телефон</th>
-                        </tr>
-                        <tr v-for="(el, index) in users" :key="index">
+                        </tr>   
+                    </thead>
+                    <tbody id="userTableBody">
+                      <tr v-for="(el, index) in users" :key="index">
                             <td><input type="checkbox"></td>
                             <td>{{el.email}}</td>
                             <td>{{el.surname}}</td>
                             <td>{{el.firstName}}</td>
                             <td>{{el.phone}}</td>
                         </tr>
-                    </thead>
-                    <tbody id="userTableBody">
                     </tbody>
                 </table>
             </div>
