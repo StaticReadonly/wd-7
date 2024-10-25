@@ -1,5 +1,4 @@
 <script setup>
-    
 </script>
 
 <template>
@@ -51,6 +50,16 @@
     </footer>
 </template>
 
-<style>
-    @import url('../styles/index_style');
-</style>
+<script>
+    export default {
+        mounted() {
+            const script = document.createElement('script');
+            script.setAttribute('src', 'https://kit.fontawesome.com/465d4025de.js');
+            script.setAttribute('defer', 'defer');
+            script.setAttribute('crossorigin', 'anonymous');
+            document.head.appendChild(script);
+        }
+    }
+</script>
+
+<style scoped src="../styles/footer.css"></style>

@@ -1,5 +1,5 @@
 <script setup>
-
+    
 </script>
 
 <template>
@@ -36,6 +36,4 @@
     </div>
 </template>
 
-<style>
-    @import url('../styles/faq_style');
-</style>
+<style scoped src="../styles/faq_style.css"></style>

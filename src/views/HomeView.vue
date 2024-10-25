@@ -99,6 +99,4 @@
     <Footer/>
 </template>
 
-<style>
-    @import url('../styles/index_style.css');
-</style>
+<style scoped src="../styles/index_style.css"></style>

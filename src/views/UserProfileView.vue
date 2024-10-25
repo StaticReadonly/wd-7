@@ -1,5 +1,5 @@
 <script setup>
-
+    
 </script>
 
 <template>
@@ -61,6 +61,4 @@
     </div>
 </template>
 
-<style>
-    @import url('../styles/account_style.css');
-</style>
+<style scoped src='../styles/account_style.css'></style>

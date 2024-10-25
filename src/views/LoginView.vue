@@ -1,5 +1,5 @@
 <script setup>
- import { RouterLink } from 'vue-router';
+    import { RouterLink } from 'vue-router';
 </script>
 
 <template>
@@ -25,6 +25,4 @@
     </main>
 </template>
 
-<style>
-    @import url('../styles/login_form_common.css');
-</style>
+<style scoped src="../styles/login_form_common.css"></style>

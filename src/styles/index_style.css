@@ -150,62 +150,7 @@ h4 {
     padding: 30px;
 }
 
-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(231, 85, 12);
-    height: 200px;
-    padding: 40px;
-    width: 100%;
-    position: relative;
-    bottom: 0;
-}
 
-footer>div {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-footer>div>div {
-    display: flex;
-    text-transform: uppercase;
-    color: white;
-    font-weight: bold;
-}
-
-footer>div>ul {
-    list-style: none;
-
-}
-
-footer>div>ul>li {
-    color: white;
-    margin: 0 0 5px 0;
-    cursor: pointer;
-}
-
-div i {
-    font-size: 20px;
-    margin: 10px;
-}
-
-div i:hover {
-    transform: scale(1.2);
-    color: #f68223;
-}
-
-.phone-icon,
-.telegram-icon,
-.email-icon,
-.viber-icon:hover {
-    cursor: pointer;
-}
-
-.icon-container {
-    gap: 16px;
-}
 
 .button-container {
     display: flex;
@@ -314,44 +259,6 @@ div i:hover {
     .container {
         flex-direction: column;
     }
-
-    footer {
-        flex-direction: column;
-        height: auto;
-        padding: 20px;
-        text-align: center;
-    }
-
-    footer>div {
-        align-items: center;
-        margin-bottom: 20px;
-    }
-
-    footer>div>div {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    footer>div>ul {
-        padding: 0;
-    }
-
-    footer>div>ul>li {
-        margin: 5px 0;
-    }
-
-    .icon-container {
-        display: inline;
-        justify-content: center;
-        gap: 15px;
-        padding: 10px;
-    }
-
-    .icon-container a {
-        text-decoration: none;
-        font-size: 24px;
-    }
-
 }
 
 @media (max-width: 780px) {
