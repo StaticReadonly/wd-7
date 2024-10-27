@@ -175,11 +175,13 @@
                 <div>
                     Стать
                 </div>
-                <div>
-                    <input type="radio" name="gender" value="male" @input="genderInput"> Чоловік
-                    <input type="radio" name="gender" value="female" @input="genderInput"> Жінка
+                <fieldset @input="genderInput">
+                    <input type="radio" name="gender" value="male" 
+                        v-bind:checked="currentUser.gender ? currentUser.gender === 'male' : false"> Чоловік
+                    <input type="radio" name="gender" value="female" 
+                        v-bind:checked="currentUser.gender ? currentUser.gender === 'female' : false"> Жінка
                     <span v-if="errors.gender" class="error-message">Невірна стать</span>
-                </div>
+                </fieldset>
             </div>
 
 
