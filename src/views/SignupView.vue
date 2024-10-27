@@ -186,7 +186,7 @@
             <label>
                 Дата народження
                 <input type="date" v-bind:value="currentUser.date" @input="dateInput">
-                <span v-if="errors.birthday" class="error-message">Невірна дата народження</span>
+                <span v-if="errors.date" class="error-message">Невірна дата народження</span>
             </label>
             <label>
                 Група

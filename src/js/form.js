@@ -69,10 +69,10 @@ export const dateValidator = (data, errors) => {
     const currentDate = new Date(data.date);
 
     if (!(minDate < currentDate && currentDate < maxDate)) {
-        errors.birthday = true;
+        errors.date = true;
     }
     else{
-        errors.birthday = false;
+        errors.date = false;
     }
 }
 
