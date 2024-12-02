@@ -9,7 +9,7 @@ export default {
     return {
       tagSearch: '',       
       tagAdd: {
-        id: '',              // Додаємо поле id для нового тегу
+        id: '',              
         name: '',
         description: '',
       },          
@@ -25,9 +25,8 @@ export default {
         const selectedTag = this.filteredTags.find(tag => tag.name === selectedName);
         
         if (selectedTag) {
-          // Тепер передаємо id разом з name
           this.$emit('add-selected-tag', {
-            id: selectedTag.id,       // Передаємо id
+            id: selectedTag.id,     
             name: selectedTag.name
           });
         }
@@ -47,20 +46,18 @@ export default {
       const newTagDescription = this.tagAdd.description.trim();  
 
       if (newTag && !this.tags.some(t => t.name === newTag)) {
-        // Для нового тегу id має бути пустим, якщо сервер ще не надав його
         const newTagData = { 
-          id: this.tagAdd.id,       // Передаємо id (воно може бути порожнім на початку)
+          id: this.tagAdd.id,      
           name: newTag, 
           description: newTagDescription
         };
 
-        // Відправляємо додавання нового тегу на сервер
         this.$emit('add-tag', newTagData);  
         this.$emit('add-all-tag', newTagData);  
 
         this.tagAdd.name = '';
         this.tagAdd.description = '';
-        this.tagAdd.id = ''; // очищаємо id після додавання
+        this.tagAdd.id = '';
       }
     },
 
