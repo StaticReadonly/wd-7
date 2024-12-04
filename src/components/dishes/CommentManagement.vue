@@ -1,15 +1,15 @@
 <script>
 export default {
   props: {
-    comments: Array,        // Список коментарів
-    userName: String,       // Ім'я користувача
+    comments: Array,        
+    userName: String,       
   },
   data() {
     return {
-      newComment: '',        // Текст нового коментаря
-      editingCommentId: null, // Id коментаря, що редагується
-      editingCommentText: '', // Текст редагованого коментаря
-      commentSearch: '',      // Текст для пошуку коментарів
+      newComment: '',        
+      editingCommentId: null, 
+      editingCommentText: '', 
+      commentSearch: '',      
     };
   },
   methods: {
@@ -28,7 +28,7 @@ export default {
     },
 
     editComment(comment) {
-      if (comment.userName === this.userName) {
+      if (comment.canEdit) {
         this.editingCommentId = comment.id;
         this.editingCommentText = comment.text;
       } else {
@@ -78,9 +78,10 @@ export default {
           <span v-else>
             {{ comment.text }}
           </span>
-          <div v-if="comment.userName === userName">
+          <div v-if="comment.canEdit">
           <button @click="editComment(comment)"><i class="fa-regular fa-pen-to-square"></i></button>
         </div>
+        <p class="timestamp">{{ comment.timeStamp }}</p>
       </div>
 
       </div>

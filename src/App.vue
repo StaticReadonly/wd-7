@@ -27,16 +27,14 @@ const fetchUserData = async () => {
         last_name: data.last_name,
         role: data.role
       });
-      console.log('data',data);
-
       user.value.userData = data;
       localStorage.setItem('user', JSON.stringify(data));
       } else {
-        console.error('Не вдалося отримати дані користувача');
+        console.error('Failed to retrieve user data');
         console.log('res',res);
       }
     } catch (error) {
-      console.error('Помилка при отриманні даних:', error);
+      console.error('Error retrieving data:', error);
     } finally {
       user.value.loading = false;
     }

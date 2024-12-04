@@ -1,19 +1,9 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { useUserStore } from '@/stores/userStore';
-//import { onMounted} from 'vue'; 
 
 const router = useRouter();
 const userStore = useUserStore();
-
-// onMounted(() => {
-//   const storedUser = localStorage.getItem('user');
-  
-//   if (storedUser) {
-//     const userData = JSON.parse(storedUser); 
-//     userStore.setUser(userData);  
-//   }
-// });
 
 const logout = async () => {
   try {
@@ -31,10 +21,10 @@ const logout = async () => {
       userStore.clearUser();  
       router.push('/'); 
     } else {
-      console.error('Помилка при виході');
+      console.error('Error while logging out');
     }
   } catch (error) {
-    console.error('Сталася помилка:', error);
+    console.error('An error occurred:', error);
   }
 };
 </script>

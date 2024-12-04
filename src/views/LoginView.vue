@@ -44,8 +44,7 @@ export default {
         });
 
         if (res.status === 200) {
-          const data = await res.json(); 
-          
+          const data = await res.json();           
           localStorage.setItem('token', data.token);
           localStorage.setItem('user', JSON.stringify(data.userInfo));
           userStore.setUser({
@@ -58,7 +57,7 @@ export default {
           router.push("/");
         } 
       } catch (error) {
-        console.error('Помилка при вході:', error);
+        console.error('Login error:', error);
         this.errors.push('Виникла помилка. Будь ласка, спробуйте пізніше.');
         this.form.email = '';
         this.form.password = '';

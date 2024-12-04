@@ -81,7 +81,7 @@ const submitHandler = async (e) => {
   errors.lastname = lastnameValidator(currentUser.lastname);
 
   if (errors.email || errors.password || errors.firstname || errors.lastname) {
-    console.error('Форма містить помилки');
+    console.error('The form contains errors');
     return;
   }
 
@@ -100,7 +100,6 @@ const submitHandler = async (e) => {
     });
 
     if (res.ok) {
-      console.log(currentUser)
       localStorage.setItem('token', res.token);
       localStorage.setItem('user', JSON.stringify(res.userInfo));
       userStore.setUser({
@@ -112,11 +111,11 @@ const submitHandler = async (e) => {
       router.push('/profile'); 
     } else {
       const errorData = await res.json();
-      console.error('Виникла помилка при реєстрації:', errorData);
+      console.error('An error occurred during registration:', errorData);
       errors.general = 'Неправильні дані для реєстрації';
     }
   } catch (error) {
-    console.error('Помилка при відправці запиту:', error);
+    console.error('Error sending request:', error);
     errors.general = 'Виникла помилка. Будь ласка, спробуйте пізніше.';   
   }
 };

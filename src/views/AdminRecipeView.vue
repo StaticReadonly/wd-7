@@ -50,13 +50,13 @@ export default {
 
           if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.message || 'Помилка на сервері');
+            throw new Error(errorData.message || 'Server error');
           }
 
           const data = await response.json();
           this.tags.filteredTags = data;
         } catch (error) {
-          alert(`Помилка під час пошуку тегу: ${error.message}`);
+          console.error(`Error while searching for a tag: ${error.message}`);
         }
       } else {
         alert('Для пошуку потрібно щонайменше 3 символи');
@@ -88,13 +88,13 @@ export default {
 
           if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.message || 'Помилка на сервері');
+            throw new Error(errorData.message || 'Server error');
           }
 
           const data = await response.json();
           this.tags.allTags.push(data);
         } catch (error) {
-          alert(`Не вдалося створити тег: ${error.message}`);
+          console.error(`Failed to create a tag: ${error.message}`);
         }
       }
     },
@@ -130,13 +130,13 @@ export default {
 
           if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.message || 'Помилка на сервері');
+            throw new Error(errorData.message || 'Server error');
           }
 
           const data = await response.json();
           this.ingredients.allIngredients.push(data);
         } catch (error) {
-          alert(`Не вдалося створити інгредієнт: ${error.message}`);
+          console.error(`Failed to create an ingredient: ${error.message}`);
         }
       }
     },
@@ -165,13 +165,13 @@ export default {
 
           if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.message || 'Помилка на сервері');
+            throw new Error(errorData.message || 'Server error');
           }
 
           const data = await response.json();
           this.ingredients.filteredIngredients = data;
         } catch (error) {
-          alert(`Помилка під час пошуку інгредієнтів: ${error.message}`);
+          console.error(`Error while searching for a ingredient: ${error.message}`);
         }
       } else {
         alert('Для пошуку потрібно щонайменше 3 символи');
@@ -206,10 +206,10 @@ export default {
 
         if (!response.ok) {
           const errorData = await response.json();
-          throw new Error(errorData.message || 'Помилка на сервері');         
+          throw new Error(errorData.message || 'Server error');         
         }
       } catch (error) {
-        alert(`Не вдалося створити рецепт: ${error.message}`);
+        console.error(`Failed to create a recipe: ${error.message}`);
       }
     },
 

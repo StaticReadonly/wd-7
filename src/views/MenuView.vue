@@ -20,12 +20,12 @@ export default {
         });
 
         if (!response.ok) {
-          throw new Error('Не вдалося завантажити меню');
+          throw new Error('Failed to load a menu');
         }
 
         this.menu = await response.json(); 
       } catch (error) {
-        alert(`Помилка: ${error.message}`); 
+        alert(`Error while loading a menu: ${error.message}`); 
       }
     },
   },

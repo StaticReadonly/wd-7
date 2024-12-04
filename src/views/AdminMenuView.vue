@@ -37,13 +37,13 @@ export default {
 
           if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.message || 'Помилка на сервері');
+            throw new Error(errorData.message || 'Server error');
           }
 
           const data = await response.json();
           this.dishes.filteredDishes = data;
         } catch (error) {
-          alert(`Помилка під час пошуку страви: ${error.message}`);
+          console.error(`Error while searching for a dish: ${error.message}`);
         }
       } else {
         alert('Для пошуку потрібно щонайменше 3 символи');
@@ -84,10 +84,10 @@ export default {
           this.dishes.allDishes = [];
         } else {
           const errorData = await res.json();
-          throw new Error(errorData.message || 'Помилка на сервері');
+          throw new Error(errorData.message || 'Server error');
         }
       } catch (error) {
-        alert(`Не вдалося створити меню: ${error.message}`);
+        console.error(`Failed to create menu: ${error.message}`);
       }
     },
   },

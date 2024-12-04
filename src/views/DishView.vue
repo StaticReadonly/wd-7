@@ -21,8 +21,6 @@ export default {
     this.loadComments();   
   },
   methods: {
-    
-    // Завантаження даних про страву
     async loadRecipeData() {
       try {
         const response = await fetch(`https://localhost:7015/api/dish/info/${this.id}`, {
@@ -33,17 +31,16 @@ export default {
         });
 
         if (!response.ok) {
-          throw new Error('Не вдалося завантажити страву');
+          throw new Error('Failed to load dish');
         }
 
         const recipeData = await response.json();
         this.recipe = recipeData; 
       } catch (error) {
-        console.error('Помилка при завантаженні страви:', error);
+        console.error('Error loading a dish:', error);
       }
     },
 
-    // Завантаження коментарів
     async loadComments() {
       try {
         const response = await fetch(`https://localhost:7015/api/comment/${this.id}`, {
@@ -54,21 +51,34 @@ export default {
         });
 
         if (!response.ok) {
-          throw new Error('Не вдалося завантажити коментарі');
+          throw new Error('Could not load comments');
         }
         const loadedComments = await response.json();
         console.log(loadedComments);
-        this.comments = loadedComments.map(comment => ({
-          id: comment.id,
-          userName: comment.ownerInfo.first_Name,
-          text: comment.text,
-        }));
+        this.comments = loadedComments.map(comment => {
+          const formattedTimeStamp = new Date(comment.timeStamp).toLocaleString('uk-UA', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+          });
+
+          return {
+            id: comment.id,
+            userName: comment.ownerInfo.first_Name,
+            timeStamp: formattedTimeStamp, 
+            canEdit: comment.canEdit,
+            text: comment.text,
+          };
+        });
+
       } catch (error) {
-        console.error('Помилка при завантаженні коментарів:', error);
+        console.error('Error loading comments:', error);
       }
     },
 
-    // Додавання нового коментаря
     async addComment(newComment) {
       try {
         const response = await fetch(`https://localhost:7015/api/comment/${this.id}/post`, {
@@ -81,17 +91,15 @@ export default {
         });
 
         if (!response.ok) {
-          throw new Error('Не вдалося додати коментар');
+          throw new Error('Could not add comment');
         }
 
-        // Завантажуємо нові коментарі після додавання
         await this.loadComments();
       } catch (error) {
-        console.error('Помилка при додаванні коментаря:', error);
+        console.error('Error adding a comment:', error);
       }
     },
 
-    // Оновлення коментаря
     async updateComment(updatedCommentId, updatedCommentText) {
       try {
         const response = await fetch(`https://localhost:7015/api/comment/${updatedCommentId}/edit`, {
@@ -104,7 +112,7 @@ export default {
         });
 
         if (!response.ok) {
-          throw new Error('Не вдалося оновити коментар');
+          throw new Error('Could not update comment');
         }
 
         const comment = this.comments.find(c => c.id === updatedCommentId);
@@ -112,7 +120,7 @@ export default {
           comment.text = updatedCommentText; 
         }
       } catch (error) {
-        console.error('Помилка при оновленні коментаря:', error);
+        console.error('Error updating a comment:', error);
       }
     },
 

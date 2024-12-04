@@ -20,6 +20,10 @@ const recipesRoute = computed(() =>
     ? (userStore.role === 'Admin' ? '/admin/recipes' : '/user/recipes') 
     : '/user/recipes'
 );
+
+const accountLabel = computed(() => 
+  userStore.email ? 'Обліковий запис' : 'Увійти'
+);
 </script>
 
 <template>
@@ -28,7 +32,7 @@ const recipesRoute = computed(() =>
     <nav>
       <RouterLink v-if="menuRoute" :to="menuRoute">Меню</RouterLink>
       <RouterLink v-if="recipesRoute" :to="recipesRoute">Рецепти</RouterLink>
-      <RouterLink :to="accountRoute">Обліковий запис</RouterLink>
+      <RouterLink :to="accountRoute">{{ accountLabel }}</RouterLink>
       <RouterLink to="/faq">FAQ</RouterLink>
     </nav>
     <label for="main-menu-checker" class="main-menu-button"></label>
@@ -39,7 +43,7 @@ const recipesRoute = computed(() =>
         <RouterLink class="menu-item" to="/">Головна</RouterLink>
         <RouterLink v-if="menuRoute" class="menu-item" :to="menuRoute">Меню</RouterLink>
         <RouterLink v-if="recipesRoute" class="menu-item" :to="recipesRoute">Рецепти</RouterLink>
-        <RouterLink class="menu-item" :to="accountRoute">Обліковий запис</RouterLink>
+        <RouterLink class="menu-item" :to="accountRoute">{{ accountLabel }}</RouterLink>
         <RouterLink class="menu-item" to="/faq">FAQ</RouterLink>
       </div>
     </div>

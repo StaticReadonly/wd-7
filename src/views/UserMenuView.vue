@@ -26,12 +26,12 @@ export default {
 
             if (!response.ok) {
               const errorData = await response.json();
-              throw new Error(errorData.message || 'Помилка на сервері');
+              throw new Error(errorData.message || 'Server error');
             }
             const data = await response.json();
             this.filteredMenus = data;
           } catch (error) {
-            alert(`Помилка під час пошуку меню: ${error.message}`);
+            console.error(`Error while searching for a menu: ${error.message}`);
           }
         } else {
           alert('Для пошуку потрібно щонайменше 3 символи');
