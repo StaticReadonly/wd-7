@@ -1,0 +1,180 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  /* Це гарантує, що padding і border не впливають на розміри елементів */
+}
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fb;
+  margin: 0;
+  padding: 0;
+}
+.recipe-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  h1,h2, h3 {
+    color: #602708;
+  }
+
+  
+  h3 {
+    font-size: 1.4rem;
+  }
+  .tags {
+    margin-top: 1rem;
+  }
+  
+  .tag {
+    display: inline-block;
+    background-color: #ffe7d0;
+    padding: 5px 10px;
+    margin: 3px;
+    border-radius: 3px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  table th,
+  table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  table th {
+    background-color: #f19d49;
+    color: white;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  
+  ol {
+    margin-top: 1rem;
+    padding-left: 20px;
+  }
+  
+  ol li {
+    margin-bottom: 10px;
+  }
+  
+  img {
+    max-width: 100%;
+    margin-top: 10px;
+  }
+  
+  video {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+textarea{
+  width: 50%;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  border-color: #f19d49;
+}
+
+button {
+  padding: 6px 10px;
+  background-color: #ffa574;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  margin-top: 10px;
+}
+
+p {
+  color: #4b1e06;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.comments-section{
+  max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.comments, .recipe-container{
+  max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.comment {
+  max-width: 600px; 
+  margin: 10px 0; 
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: block;  
+  gap: 10px;
+}
+
+.comment button {
+  padding: 6px 12px;
+  background-color: #ffa574;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.comment:hover {
+  background-color: #f9f9f9;
+}
+
+.warning-message {
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+  background-color: #fff5f0;
+  border: 1px solid #feefe8; 
+  border-radius: 5px;
+  color: #721c24; 
+  font-family: Arial, sans-serif;
+}
+

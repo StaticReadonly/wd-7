@@ -1,0 +1,37 @@
+body {
+    background-color: #fafafa;
+}
+
+h1 {
+    font-size: 1.8em;
+    color: #611a03;
+    text-align: center;
+}
+
+.faq-container {
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faq-item {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.question {
+    font-weight: bold;
+    color: #611a03;
+    cursor: pointer;
+}
+
+.answer {
+    margin-top: 10px;
+    color: #666666;
+}
