@@ -100,13 +100,14 @@ const submitHandler = async (e) => {
     });
 
     if (res.ok) {
-      localStorage.setItem('token', res.token);
-      localStorage.setItem('user', JSON.stringify(res.userInfo));
-      userStore.setUser({
-        email: currentUser.email,
-        first_name: currentUser.firstname,
-        last_name: currentUser.lastname,
-        role: currentUser.role,
+      const data = await res.json();           
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('user', JSON.stringify(data.userInfo));
+          userStore.setUser({
+            email: data.userInfo.email,
+            first_name: data.userInfo.first_name,
+            last_name: data.userInfo.last_name,
+            role: data.userInfo.role,
       });
       router.push('/profile'); 
     } else {
