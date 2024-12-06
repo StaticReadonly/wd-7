@@ -53,9 +53,11 @@ export default {
             last_name: data.userInfo.last_name,
             role: data.userInfo.role,
           });
-
           router.push("/");
-        } 
+        }
+        if (!res.ok) {
+            alert('Неправильні дані для входу');;
+          }
       } catch (error) {
         console.error('Login error:', error);
         this.errors.push('Виникла помилка. Будь ласка, спробуйте пізніше.');
