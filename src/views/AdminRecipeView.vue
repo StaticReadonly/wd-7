@@ -115,7 +115,7 @@ export default {
 
     async addIngredient(ingredient) {
       if (ingredient && !this.newRecipe.ingredients.includes(ingredient)) {
-        this.newRecipe.ingredients.push(ingredient);
+        //this.newRecipe.ingredients.push(ingredient);
         try {
           const response = await fetch('https://localhost:7015/api/ingredient/create', {
             method: 'POST',
@@ -136,6 +136,11 @@ export default {
 
           const data = await response.json();
           this.ingredients.allIngredients.push(data);
+
+          //--ingredient add fix
+          ingredient.id = data.id;                        
+          this.newRecipe.ingredients.push(ingredient);   
+          //--
         } catch (error) {
           console.error(`Failed to create an ingredient: ${error.message}`);
         }
